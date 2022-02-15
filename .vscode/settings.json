@@ -1,0 +1,31 @@
+{
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "search.exclude": {
+      "package-lock.json": true
+    },
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": [
+      "source.addMissingImports",
+      "source.fixAll.eslint"
+    ],
+    // Multiple language settings for json and jsonc files
+    "[json][jsonc]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    // Tailwind Styled Components
+    "tailwindCSS.includeLanguages": {
+        "typescript": "javascript", // if you are using typescript
+        "typescriptreact": "javascript"  // if you are using typescript with react
+    },
+    "editor.quickSuggestions": {
+        "strings": true // forces VS Code to trigger completions when editing "string" content
+    },
+    "tailwindCSS.experimental.classRegex": [
+        "tw`([^`]*)", // tw`...`
+        "tw\\.[^`]+`([^`]*)`", // tw.xxx<xxx>`...`
+        "tw\\(.*?\\).*?`([^`]*)" // tw(Component)<xxx>`...`
+    ]
+  }
