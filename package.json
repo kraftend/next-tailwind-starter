@@ -14,9 +14,9 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@fontsource/inter": "^4.5.4",
+    "@fontsource/inter": "^4.5.5",
     "focus-visible": "^5.2.0",
-    "framer-motion": "^6.2.6",
+    "framer-motion": "^6.2.8",
     "next": "12.1.0",
     "next-seo": "^5.1.0",
     "react": "17.0.2",
@@ -24,26 +24,26 @@
     "tailwind-styled-components": "^2.1.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.2.1",
+    "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
-    "@types/node": "17.0.18",
-    "@types/react": "17.0.39",
-    "autoprefixer": "^10.4.2",
-    "cssnano": "^5.0.17",
-    "eslint": "8.9.0",
+    "@types/node": "17.0.21",
+    "@types/react": "17.0.40",
+    "autoprefixer": "^10.4.4",
+    "cssnano": "^5.1.4",
+    "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
-    "eslint-config-prettier": "^8.4.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.3.4",
-    "postcss": "^8.4.6",
+    "lint-staged": "^12.3.6",
+    "postcss": "^8.4.12",
     "postcss-viewport-height-correction": "^1.1.1",
-    "prettier": "^2.5.1",
-    "prettier-plugin-tailwindcss": "^0.1.7",
+    "prettier": "^2.6.0",
+    "prettier-plugin-tailwindcss": "^0.1.8",
     "standard-version": "^9.3.2",
     "tailwindcss": "^3.0.23",
-    "typescript": "4.5.5"
+    "typescript": "4.6.2"
   }
 }
