@@ -6,7 +6,7 @@ import { useVhValue } from '@/hooks/useVhValue';
 import SEOConfig from '@_/seo.config';
 
 import 'focus-visible';
-import '@fontsource/inter';
+import '@fontsource/inter/variable.css';
 import '@/styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
