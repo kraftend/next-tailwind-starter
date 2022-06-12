@@ -4096,10 +4096,10 @@ tailwind-merge@^1.2.0:
   dependencies:
     hashlru "^2.3.0"
 
-tailwind-styled-components@^2.1.7:
-  version "2.1.7"
-  resolved "https://registry.yarnpkg.com/tailwind-styled-components/-/tailwind-styled-components-2.1.7.tgz#c314249a4fda76441c9be5205db1e29573574c5a"
-  integrity sha512-L20oQlwWM+kbYHIrwvvMQ0HHqt1Z/tInnO/Q9zM0IV/vqUxSIcLAmhMwbbiZmyXTdAVz84N4s1GtIyGODq80Pw==
+tailwind-styled-components@2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/tailwind-styled-components/-/tailwind-styled-components-2.1.6.tgz#bffeea787b85a73c7d57964be2a23928e1966216"
+  integrity sha512-qqZXvwMYrZoLS75eyxeU+XgrwBmrcJA7568Jj+RWsah0EswKzLc0vkaHtLQFYiHbWy8lDwKVMRFsUWQ4GBpHzA==
   dependencies:
     tailwind-merge "^1.2.0"
 
