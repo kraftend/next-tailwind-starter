@@ -1,4 +1,5 @@
 {
+  "ignorePatterns": ["**/*.md"],
   "extends": [
     "next/core-web-vitals",
     "plugin:import/recommended",
@@ -27,7 +28,8 @@
       }
     ],
     "import/prefer-default-export": "off",
-    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-imports": "warn",
+    "import/no-extraneous-dependencies": ["error"],
     "unused-imports/no-unused-vars": [
       "warn",
       { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
@@ -36,5 +38,16 @@
       "error",
       { "props": "never", "children": "never", "propElementValues": "always" }
     ]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": ["tsconfig.json"]
+      }
+    }
   }
 }
