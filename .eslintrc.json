@@ -6,7 +6,7 @@
     "plugin:import/typescript",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["unused-imports"],
+  "plugins": ["unused-imports", "no-autofix"],
   "rules": {
     "import/order": [
       "error",
@@ -28,7 +28,7 @@
       }
     ],
     "import/prefer-default-export": "off",
-    "unused-imports/no-unused-imports": "warn",
+    "no-autofix/unused-imports/no-unused-imports": "warn",
     "import/no-extraneous-dependencies": ["error"],
     "unused-imports/no-unused-vars": [
       "warn",
