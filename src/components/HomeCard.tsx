@@ -1,28 +1,17 @@
 import { AnchorHTMLAttributes, FC } from 'react';
 
-import tw from 'tailwind-styled-components';
+import { cva } from 'class-variance-authority';
 
-const CardElement = tw.a<{ $highlight?: boolean }>`
-    w-full
-    p-4 md:p-6
-    rounded-xl
-    shadow-md hover:shadow-xl
-    border
-    text-left
-    transition
-    group
-    ${({ $highlight }) => ($highlight ? 'bg-gray-800 text-gray-50' : '')}
-`;
-
-const CardTitle = tw.h3`
-    text-lg md:text-2xl font-bold
-    group-hover:text-pink-500 group-focus:text-pink-500
-    transition duration-1000
-`;
-
-const CardDescription = tw.p`
-    mt-2 md:mt-4 text-base md:text-xl
-`;
+const cardElementClass = cva(
+  'w-full p-4 md:p-6 rounded-xl shadow-md hover:shadow-xl border text-left transition group',
+  {
+    variants: {
+      highlight: {
+        true: 'bg-gray-800 text-gray-50',
+      },
+    },
+  },
+);
 
 type HomeCardProps = {
   title: string;
@@ -36,9 +25,11 @@ export const HomeCard: FC<HomeCardProps & AnchorHTMLAttributes<HTMLAnchorElement
   ...props
 }) => {
   return (
-    <CardElement $highlight={highlight} {...props}>
-      <CardTitle>{title} &rarr;</CardTitle>
-      <CardDescription>{children}</CardDescription>
-    </CardElement>
+    <a className={cardElementClass({ highlight })} {...props}>
+      <h3 className="text-lg font-bold transition duration-1000 group-hover:text-pink-500 group-focus:text-pink-500 md:text-2xl">
+        {title} &rarr;
+      </h3>
+      <p className="mt-2 text-base md:mt-4 md:text-xl">{children}</p>
+    </a>
   );
 };
