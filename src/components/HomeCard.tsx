@@ -1,6 +1,7 @@
 import { AnchorHTMLAttributes, FC } from 'react';
-
 import { cva } from 'class-variance-authority';
+
+import { cn } from '@/lib/utils';
 
 const cardElementClass = cva(
   'w-full p-4 md:p-6 rounded-xl shadow-md hover:shadow-xl border text-left transition group',
@@ -25,7 +26,7 @@ export const HomeCard: FC<HomeCardProps & AnchorHTMLAttributes<HTMLAnchorElement
   ...props
 }) => {
   return (
-    <a className={cardElementClass({ highlight })} {...props}>
+    <a className={cn(cardElementClass({ highlight }))} {...props}>
       <h3 className="text-lg font-bold transition duration-1000 group-hover:text-pink-500 group-focus:text-pink-500 md:text-2xl">
         {title} &rarr;
       </h3>

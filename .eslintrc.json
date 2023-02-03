@@ -1,32 +1,17 @@
 {
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "root": true,
   "ignorePatterns": ["**/*.md"],
   "extends": [
     "next/core-web-vitals",
     "plugin:import/recommended",
     "plugin:import/typescript",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:tailwindcss/recommended"
   ],
-  "plugins": ["unused-imports", "no-autofix"],
+  "plugins": ["unused-imports", "no-autofix", "tailwindcss"],
   "rules": {
-    "import/order": [
-      "error",
-      {
-        "groups": ["builtin", "external", "internal"],
-        "pathGroups": [
-          {
-            "pattern": "react",
-            "group": "external",
-            "position": "before"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": ["react"],
-        "newlines-between": "always",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
-      }
-    ],
+    "@next/next/no-html-link-for-pages": "off",
     "import/prefer-default-export": "off",
     "no-autofix/unused-imports/no-unused-imports": "warn",
     "import/no-extraneous-dependencies": ["error"],
@@ -37,9 +22,13 @@
     "react/jsx-curly-brace-presence": [
       "error",
       { "props": "never", "children": "never", "propElementValues": "always" }
-    ]
+    ],
+    "tailwindcss/no-custom-classname": "off"
   },
   "settings": {
+    "tailwindcss": {
+      "callees": ["cn"]
+    },
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },

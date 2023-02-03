@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-
 import { createBreakpoint } from 'react-use';
 import resolve from 'tailwindcss/resolveConfig';
 

@@ -1,10 +1,9 @@
-import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { DefaultSeo } from 'next-seo';
 
-import { useVhValue } from '@/hooks/useVhValue';
 import SEOConfig from '@_/seo.config';
-
+import { useVhValue } from '@/hooks/useVhValue';
 import 'focus-visible';
 import '@fontsource/inter/variable.css';
 import '@/styles/globals.css';
