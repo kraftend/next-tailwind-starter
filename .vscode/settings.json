@@ -3,7 +3,8 @@
   "editor.detectIndentation": false,
   "search.exclude": {
     "package-lock.json": true,
-    "yarn.lock": true
+    "yarn.lock": true,
+    "pnpm-lock.yaml": true
   },
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.formatOnSave": false,
@@ -28,5 +29,8 @@
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"] //cva(..)
   ],
   // Conventional Commits
-  "conventionalCommits.autoCommit": false
+  "conventionalCommits.autoCommit": false,
+  //TS
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.preferences.importModuleSpecifier": "non-relative"
 }
