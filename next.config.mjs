@@ -1,6 +1,6 @@
 // @ts-check
 // eslint-disable-next-line unused-imports/no-unused-imports
-import { env } from './src/env/server.mjs';
+import { env } from './src/env.mjs';
 
 /**
  * Don't be scared of the generics here.
