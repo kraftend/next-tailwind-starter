@@ -27,7 +27,7 @@
   },
   "settings": {
     "tailwindcss": {
-      "callees": ["cn"]
+      "callees": ["cn", "clsx", "twMerge", "cva"]
     },
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]

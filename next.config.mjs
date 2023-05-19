@@ -43,7 +43,9 @@ const securityHeaders = [
 
 export default defineNextConfig({
   reactStrictMode: true,
-  swcMinify: true,
+  experimental: {
+    typedRoutes: true,
+  },
   async headers() {
     return [
       {
