@@ -3,9 +3,10 @@ import { Inter } from 'next/font/google';
 
 // import { Analytics } from '@vercel/analytics/react';
 
-import './globals.css';
 import { TailwindIndicator } from '@/components/tailwind-indicator';
 import { cn } from '@/lib/utils';
+
+import './globals.css';
 
 const inter = Inter({ variable: '--font-sans', subsets: ['latin'], display: 'swap' });
 
@@ -16,11 +17,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={cn(inter.variable)}>
+    <html lang="en" className={cn(inter.variable)} suppressHydrationWarning>
       <body>
         {children}
-        {/* <Analytics /> */}
         <TailwindIndicator />
+        {/* <Analytics /> */}
       </body>
     </html>
   );
