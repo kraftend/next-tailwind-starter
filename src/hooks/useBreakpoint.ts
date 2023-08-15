@@ -13,7 +13,9 @@ const screens = Object.entries({
   .map(([key, val]) => [key, parseInt(String(val).replace('px', ''))])
   .sort((a, b) => (a[1] as number) - (b[1] as number));
 
-export const useBreakpointValue = createBreakpoint(Object.fromEntries(screens));
+export const useBreakpointValue = createBreakpoint(
+  Object.fromEntries(screens) as Record<string, number>,
+);
 
 export const useBreakpoint = (target: string) => {
   const current = useBreakpointValue();
