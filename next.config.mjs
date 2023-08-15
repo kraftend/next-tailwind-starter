@@ -1,5 +1,4 @@
-// @ts-check
-// eslint-disable-next-line unused-imports/no-unused-imports
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { env } from './src/env.mjs';
 
 /**
@@ -46,6 +45,7 @@ export default defineNextConfig({
   experimental: {
     typedRoutes: true,
   },
+  // eslint-disable-next-line @typescript-eslint/require-await
   async headers() {
     return [
       {

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-// import { Analytics } from '@vercel/analytics/react';
-
 import { TailwindIndicator } from '@/components/tailwind-indicator';
+import { Analytics } from '@/lib/analytics';
+import { siteURL } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
 import './globals.css';
@@ -11,7 +11,18 @@ import './globals.css';
 const inter = Inter({ variable: '--font-sans', subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
-  title: 'New Project | Kraftend',
+  metadataBase: siteURL,
+  title: {
+    default: 'next-starter | kraftend',
+    template: `%s | kraftend`,
+  },
+  description: `Kraftend's default boilerplate with Next.js.`,
+  twitter: {
+    card: 'summary_large_image',
+    title: 'next-starter | kraftend',
+    creator: '@kraftend',
+    siteId: '@kraftend',
+  },
   viewport: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0',
 };
 
@@ -21,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <TailwindIndicator />
-        {/* <Analytics /> */}
+        <Analytics />
       </body>
     </html>
   );
