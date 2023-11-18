@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/require-await */
 import { env } from './src/env.mjs';
 
 /**
@@ -12,60 +13,54 @@ function defineNextConfig(config) {
   return config;
 }
 
-const securityHeaders = [
-  {
-    key: 'X-DNS-Prefetch-Control',
-    value: 'on',
-  },
-  {
-    key: 'Strict-Transport-Security',
-    value: 'max-age=63072000; preload',
-  },
-  {
-    key: 'X-XSS-Protection',
-    value: '1; mode=block',
-  },
-  {
-    key: 'X-Frame-Options',
-    value: 'SAMEORIGIN',
-  },
-  {
-    key: 'X-Content-Type-Options',
-    value: 'nosniff',
-  },
-  {
-    key: 'Referrer-Policy',
-    value: 'origin-when-cross-origin',
-  },
-];
-
 export default defineNextConfig({
   poweredByHeader: false,
   reactStrictMode: true,
   experimental: {
     typedRoutes: true,
   },
-  // eslint-disable-next-line @typescript-eslint/require-await
   async headers() {
     return [
-      {
-        // Apply these headers to all routes in your application.
+      process.env.NODE_ENV === 'production' && {
+        // Apply these security headers to all routes in production.
         source: '/:path*',
-        headers: securityHeaders,
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; preload',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin',
+          },
+        ],
       },
-    ];
+    ].filter(Boolean);
   },
-  // eslint-disable-next-line @typescript-eslint/require-await
   async rewrites() {
-    return {
-      fallback: [
-        !!env.NEXT_PUBLIC_UMAMI_TRACKING_ID && {
-          source: '/stats/:match*',
-          destination: `${
-            env.NEXT_PUBLIC_UMAMI_TRACKING_URL ?? 'https://umami.kraftend.dev'
-          }/:match*`,
-        },
-      ].filter(Boolean),
-    };
+    return [
+      !!env.NEXT_PUBLIC_UMAMI_TRACKING_ID && {
+        source: '/stats/:match*',
+        destination: `${
+          env.NEXT_PUBLIC_UMAMI_TRACKING_URL ?? 'https://umami.kraftend.dev'
+        }/:match*`,
+      },
+    ].filter(Boolean);
   },
 });
