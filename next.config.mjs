@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { env } from './src/env.mjs';
 
 /**
@@ -41,6 +40,7 @@ const securityHeaders = [
 ];
 
 export default defineNextConfig({
+  poweredByHeader: false,
   reactStrictMode: true,
   experimental: {
     typedRoutes: true,
@@ -55,5 +55,17 @@ export default defineNextConfig({
       },
     ];
   },
-  poweredByHeader: false,
+  // eslint-disable-next-line @typescript-eslint/require-await
+  async rewrites() {
+    return {
+      fallback: [
+        !!env.NEXT_PUBLIC_UMAMI_TRACKING_ID && {
+          source: '/stats/:match*',
+          destination: `${
+            env.NEXT_PUBLIC_UMAMI_TRACKING_URL ?? 'https://umami.kraftend.dev'
+          }/:match*`,
+        },
+      ].filter(Boolean),
+    };
+  },
 });

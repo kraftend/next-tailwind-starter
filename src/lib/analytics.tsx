@@ -71,7 +71,7 @@ function UmamiAnalytics() {
     return (
       <Script
         strategy="afterInteractive"
-        src={`${env.NEXT_PUBLIC_UMAMI_TRACKING_URL ?? 'https://umami.kraftend.dev'}/script.js`}
+        src="/stats/script.js"
         data-website-id={env.NEXT_PUBLIC_UMAMI_TRACKING_ID}
       />
     );
