@@ -8,8 +8,7 @@ const config = resolve(tailwindConfig);
 
 const screens = Object.entries({
   base: '0px',
-  //@ts-expect-error ???
-  ...(config.theme?.screens as Record<string, string>),
+  ...config.theme?.screens,
 })
   .map(([key, val]) => [key, parseInt(String(val).replace('px', ''))])
   .sort((a, b) => (a[1] as number) - (b[1] as number));

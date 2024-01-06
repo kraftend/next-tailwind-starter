@@ -11,7 +11,7 @@
   }
 
   body {
-    @apply font-sans min-h-screen;
+    @apply font-sans min-h-screen bg-white text-black;
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
@@ -19,5 +19,39 @@
 
   ::selection {
     @apply bg-black text-white;
+  }
+
+  html.lenis {
+    height: auto;
+    &.lenis-smooth {
+      scroll-behavior: auto;
+    }
+    &.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+    &.lenis-stopped {
+      overflow: hidden;
+    }
+    &.lenis-scrolling iframe {
+      pointer-events: none;
+    }
+  }
+}
+
+@layer utilities {
+  .animated-underline {
+    @apply relative;
+
+    &::before {
+      content: '';
+      @apply bg-current bottom-1 h-[0.1em] min-h-[1px] left-4 right-4 absolute scale-x-0 transition origin-right ease-in-out duration-500;
+    }
+
+    &:hover:before,
+    &[data-state='open']:before,
+    &[data-active='true']:before,
+    &:focus-within:before {
+      @apply scale-x-100 origin-left;
+    }
   }
 }
