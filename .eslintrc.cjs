@@ -10,14 +10,9 @@ const config = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:tailwindcss/recommended',
-    'plugin:@next/next/recommended',
-    'plugin:prettier/recommended',
+    'plugin:@next/next/core-web-vitals',
+    'prettier',
   ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: true,
-  },
   env: {
     es2022: true,
     node: true,
@@ -26,17 +21,11 @@ const config = {
   globals: {
     React: 'writable',
   },
+  parser: '@typescript-eslint/parser',
+  parserOptions: { project: true },
   plugins: ['@typescript-eslint', 'import'],
   rules: {
-    'no-console': [
-      1,
-      {
-        allow: ['warn', 'error'],
-      },
-    ],
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/ban-ts-comment': 'off',
-    '@typescript-eslint/require-await': 'warn',
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
     '@typescript-eslint/no-unused-vars': [
       'warn',
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
@@ -45,7 +34,14 @@ const config = {
       'warn',
       { prefer: 'type-imports', fixStyle: 'separate-type-imports' },
     ],
-    '@typescript-eslint/no-misused-promises': [2, { checksVoidReturn: { attributes: false } }],
+    '@typescript-eslint/no-misused-promises': [
+      'error',
+      { checksVoidReturn: { attributes: false } },
+    ],
+    '@typescript-eslint/require-await': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/prefer-nullish-coalescing': 'off',
     'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
     'import/no-extraneous-dependencies': ['error'],
     'import/prefer-default-export': 'off',
@@ -54,10 +50,13 @@ const config = {
       'error',
       { props: 'never', children: 'never', propElementValues: 'always' },
     ],
-    'tailwindcss/no-custom-classname': 'off',
+    'react/no-unknown-property': ['error', { ignore: ['jsx', 'cmdk-input-wrapper'] }],
     '@next/next/no-html-link-for-pages': 'off',
   },
   settings: {
+    react: {
+      version: 'detect',
+    },
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
@@ -67,25 +66,19 @@ const config = {
         project: ['tsconfig.json'],
       },
     },
-    react: {
-      version: 'detect',
-    },
-    tailwindcss: {
-      callees: ['cn', 'clsx', 'twMerge', 'cva'],
-    },
   },
   ignorePatterns: [
     '**/*.md',
-    '.eslintrc.cjs',
-    '*.esm.js',
-    '*.config.js',
-    '*.config.cjs',
+    '**/*.config.js',
+    '**/*.config.cjs',
+    '**/.eslintrc.cjs',
     '.next',
     'dist',
     'pnpm-lock.yaml',
     'node_modules',
     'public',
     '.cache',
+    'generated',
   ],
   reportUnusedDisableDirectives: true,
 };

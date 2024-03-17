@@ -6,6 +6,7 @@
     "csstools.postcss",
     "blanu.vscode-styled-jsx",
     "bradlc.vscode-tailwindcss",
-    "vivaxy.vscode-conventional-commits"
+    "vivaxy.vscode-conventional-commits",
+    "yoavbls.pretty-ts-errors"
   ]
 }

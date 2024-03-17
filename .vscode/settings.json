@@ -6,13 +6,10 @@
     "yarn.lock": true,
     "pnpm-lock.yaml": true
   },
-  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-  "editor.formatOnSave": false,
-  "editor.codeActionsOnSave": ["source.fixAll.eslint"],
-  // Multiple language settings for json and jsonc files
-  "[json][jsonc][javascript]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
   },
   // Tailwind Styled Components
   "tailwindCSS.includeLanguages": {
@@ -23,9 +20,7 @@
     "strings": true // forces VS Code to trigger completions when editing "string" content
   },
   "tailwindCSS.experimental.classRegex": [
-    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"], // clsx(...)
     ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"], // cn(...)
-    ["twMerge\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"], // twMerge(...)
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"] //cva(..)
   ],
   // Conventional Commits
@@ -33,5 +28,9 @@
   //TS
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "next/router.d.ts",
+    "next/dist/client/router.d.ts"
+  ]
 }

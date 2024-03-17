@@ -1,7 +1,5 @@
 declare module '*.svg' {
-  const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
-  // eslint-disable-next-line prettier/prettier
-  export { ReactComponent };
+  export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
 declare module '*.svg?url' {

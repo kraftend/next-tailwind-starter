@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { createBreakpoint } from 'react-use';
 import resolve from 'tailwindcss/resolveConfig';
 
-import tailwindConfig from '@_/tailwind.config';
+import tailwindConfig from '~~/tailwind.config';
 
 const config = resolve(tailwindConfig);
 

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import { Providers } from '@/app/providers';
-import { TailwindIndicator } from '@/components/tailwind-indicator';
-import { Analytics } from '@/lib/analytics';
-import { siteURL } from '@/lib/constants';
-import { cn } from '@/lib/utils';
+import { Providers } from '~/app/providers';
+import { TailwindIndicator } from '~/components/tailwind-indicator';
+import { Analytics } from '~/lib/analytics';
+import { siteURL } from '~/lib/constants';
+import { cn } from '~/lib/utils';
 
 import './globals.css';
 

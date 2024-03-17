@@ -1,5 +1,13 @@
-/* eslint-disable @typescript-eslint/require-await, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return */
-import { env } from './src/env.mjs';
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { fileURLToPath } from 'url';
+import _jiti from 'jiti';
+
+const jiti = _jiti(fileURLToPath(import.meta.url));
+// Import env files to validate at build time. Use jiti so we can load .ts files in here.
+jiti('./src/env');
 
 /**
  * Don't be scared of the generics here.
@@ -55,10 +63,10 @@ export default defineNextConfig({
   },
   async rewrites() {
     return [
-      !!env.NEXT_PUBLIC_UMAMI_TRACKING_ID && {
+      !!process.env.NEXT_PUBLIC_UMAMI_TRACKING_ID && {
         source: '/stats/:match*',
         destination: `${
-          env.NEXT_PUBLIC_UMAMI_TRACKING_URL ?? 'https://umami.kraftend.dev'
+          process.env.NEXT_PUBLIC_UMAMI_TRACKING_URL ?? 'https://umami.kraftend.dev'
         }/:match*`,
       },
     ].filter(Boolean);

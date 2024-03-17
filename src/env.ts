@@ -6,6 +6,7 @@ export const env = createEnv({
   client: {
     NEXT_PUBLIC_SITE_URL: z.string().url().optional(),
     NEXT_PUBLIC_GA_TRACKING_ID: z.string().optional(),
+    NEXT_PUBLIC_GTM_ID: z.string().optional(),
     NEXT_PUBLIC_UMAMI_TRACKING_ID: z.string().optional(),
     NEXT_PUBLIC_UMAMI_TRACKING_URL: z.string().url().optional(),
     NEXT_PUBLIC_VERCEL_ANALYTICS: z
@@ -18,8 +19,10 @@ export const env = createEnv({
   experimental__runtimeEnv: {
     NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
     NEXT_PUBLIC_GA_TRACKING_ID: process.env.NEXT_PUBLIC_GA_TRACKING_ID,
+    NEXT_PUBLIC_GTM_ID: process.env.NEXT_PUBLIC_GTM_ID,
     NEXT_PUBLIC_UMAMI_TRACKING_ID: process.env.NEXT_PUBLIC_UMAMI_TRACKING_ID,
     NEXT_PUBLIC_UMAMI_TRACKING_URL: process.env.NEXT_PUBLIC_UMAMI_TRACKING_URL,
     NEXT_PUBLIC_VERCEL_ANALYTICS: process.env.NEXT_PUBLIC_VERCEL_ANALYTICS,
   },
+  skipValidation: !!process.env.SKIP_ENV_VALIDATION || process.env.npm_lifecycle_event === 'lint',
 });
