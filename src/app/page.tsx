@@ -1,4 +1,4 @@
-import { ReactComponent as Logo } from '~/assets/kraftend.svg';
+import { ReactComponent as Logo } from '~/assets/kraftend.svg?react';
 
 export default function Home() {
   return (

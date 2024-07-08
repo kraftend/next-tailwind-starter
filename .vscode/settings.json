@@ -11,6 +11,10 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
+  "workbench.editor.customLabels.patterns": {
+    "**/app/**/{*.tsx,*.ts}": "${dirname(1)}/${dirname}/${filename}.${extname}",
+    "**/{index.tsx,index.ts}": "${dirname}/${filename}.${extname}"
+  },
   // Tailwind Styled Components
   "tailwindCSS.includeLanguages": {
     "typescript": "javascript", // if you are using typescript
