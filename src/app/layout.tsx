@@ -8,6 +8,7 @@ import { siteURL } from '~/lib/constants';
 import { cn } from '~/lib/utils';
 
 import './globals.css';
+import 'lenis/dist/lenis.css';
 
 const inter = Inter({ variable: '--font-sans', subsets: ['latin'], display: 'swap' });
 
