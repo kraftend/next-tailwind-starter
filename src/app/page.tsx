@@ -1,4 +1,5 @@
 import Logo from '~/assets/kraftend.svg';
+import { ThemeToggle } from '~/components/ui/theme-toggle';
 
 export default function Home() {
   return (
@@ -6,6 +7,7 @@ export default function Home() {
       <div className="relative flex items-center justify-center px-0 py-16">
         <Logo />
       </div>
+      <ThemeToggle />
     </main>
   );
 }

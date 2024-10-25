@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import { Providers } from '~/app/providers';
-import { TailwindIndicator } from '~/components/tailwind-indicator';
+import { TailwindIndicator } from '~/components/ui/tailwind-indicator';
+import { ThemeProvider } from '~/components/ui/theme-provider';
 import { Analytics } from '~/lib/analytics';
 import { siteURL } from '~/lib/constants';
 import { cn } from '~/lib/utils';
@@ -35,9 +36,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={cn(inter.variable)} suppressHydrationWarning>
       <body>
-        <Providers>{children}</Providers>
-        <TailwindIndicator />
-        <Analytics />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Providers>{children}</Providers>
+          <TailwindIndicator />
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );
