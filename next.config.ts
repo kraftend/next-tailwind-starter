@@ -1,35 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-const env = await import('./src/env.mjs').then((m) => m.env);
+import type { NextConfig } from 'next';
 
-/**
- * Don't be scared of the generics here.
- * All they do is to give us autocompletion when using this.
- *
- * @template {import('next').NextConfig} T
- * @param {T} config - A generic parameter that flows through to the return type
- * @constraint {{import('next').NextConfig}}
- */
-function defineNextConfig(config) {
-  return config;
-}
+import { env } from '~/env';
 
-export default defineNextConfig({
+const config: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
-  experimental: {
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          resourceQuery: /react/,
-          as: '*.js',
-        },
-      },
-    },
-  },
   logging: {
     fetches: {
       fullUrl: true,
@@ -79,23 +54,32 @@ export default defineNextConfig({
       },
     ].filter(Boolean);
   },
-  webpack(config) {
+  experimental: {
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
+  },
+  webpack(config: any) {
     // ******* SVGR SUPPORT
     // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'));
-
-    fileLoaderRule.resourceQuery = {
-      ...fileLoaderRule.resourceQuery,
-      not: [...fileLoaderRule.resourceQuery.not, /react/], // exclude if *.svg?react
-    };
-
+    const fileLoaderRule = config.module.rules.find((rule: any) => rule.test?.test?.('.svg'));
+    // Convert *.svg imports to React components
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: fileLoaderRule.issuer,
-      resourceQuery: /react/, // *.svg?react
       use: ['@svgr/webpack'],
     });
+    // Modify the file loader rule to ignore *.svg, since we have it handled now.
+    fileLoaderRule.exclude = /\.svg$/i;
+    // ******* END SVGR SUPPORT
 
     return config;
   },
-});
+};
+
+export default config;

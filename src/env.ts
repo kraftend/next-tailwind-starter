@@ -16,9 +16,12 @@ export const env = createEnv({
       .optional()
       .transform((s) => !!s && s !== 'false' && s !== '0'),
   },
-  shared: {},
+  shared: {
+    NODE_ENV: z.enum(['development', 'production', 'test']),
+  },
   // For Next.js >= 13.4.4, you only need to destructure client variables:
   experimental__runtimeEnv: {
+    NODE_ENV: process.env.NODE_ENV,
     NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
     NEXT_PUBLIC_GA_TRACKING_ID: process.env.NEXT_PUBLIC_GA_TRACKING_ID,
     NEXT_PUBLIC_GTM_ID: process.env.NEXT_PUBLIC_GTM_ID,

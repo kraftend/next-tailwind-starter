@@ -9,7 +9,7 @@ import {
 } from '@next/third-parties/google';
 import { Analytics as VercelAnalytics, track as vercelTrack } from '@vercel/analytics/react';
 
-import { env } from '~/env.mjs';
+import { env } from '~/env';
 import { isClient, isDev, isProd, signatureLog } from '~/lib/constants';
 
 declare global {
