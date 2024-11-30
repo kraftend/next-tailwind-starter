@@ -11,10 +11,6 @@ export const env = createEnv({
     NEXT_PUBLIC_GTM_ID: z.string().optional(),
     NEXT_PUBLIC_UMAMI_TRACKING_ID: z.string().optional(),
     NEXT_PUBLIC_UMAMI_TRACKING_URL: z.string().url().optional(),
-    NEXT_PUBLIC_VERCEL_ANALYTICS: z
-      .string()
-      .optional()
-      .transform((s) => !!s && s !== 'false' && s !== '0'),
   },
   shared: {
     NODE_ENV: z.enum(['development', 'production', 'test']),
@@ -27,7 +23,6 @@ export const env = createEnv({
     NEXT_PUBLIC_GTM_ID: process.env.NEXT_PUBLIC_GTM_ID,
     NEXT_PUBLIC_UMAMI_TRACKING_ID: process.env.NEXT_PUBLIC_UMAMI_TRACKING_ID,
     NEXT_PUBLIC_UMAMI_TRACKING_URL: process.env.NEXT_PUBLIC_UMAMI_TRACKING_URL,
-    NEXT_PUBLIC_VERCEL_ANALYTICS: process.env.NEXT_PUBLIC_VERCEL_ANALYTICS,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION || process.env.npm_lifecycle_event === 'lint',
 });

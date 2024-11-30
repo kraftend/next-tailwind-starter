@@ -74,7 +74,7 @@
   }
 
   body {
-    @apply min-h-screen bg-background font-sans text-foreground;
+    @apply min-h-[100dvh] bg-background font-sans text-foreground;
     font-feature-settings:
       'rlig' 1,
       'calt' 1;

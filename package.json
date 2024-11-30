@@ -5,7 +5,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "clean": "git clean -xdf .next node_modules",
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -14,6 +14,7 @@
     "format:fix": "prettier --check . --write",
     "typecheck": "tsc --noemit",
     "check": "pnpm typecheck && pnpm lint && pnpm format",
+    "fix": "pnpm format:fix && pnpm lint:fix",
     "add-ui": "pnpm dlx shadcn@latest add"
   },
   "dependencies": {
@@ -21,7 +22,6 @@
     "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.0",
     "@t3-oss/env-nextjs": "^0.11.1",
-    "@vercel/analytics": "^1.4.1",
     "class-variance-authority": "^0.7.1",
     "lenis": "^1.1.17",
     "lucide-react": "^0.462.0",
@@ -42,6 +42,8 @@
     "@tailwindcss/typography": "^0.5.15",
     "@total-typescript/ts-reset": "^0.6.1",
     "@types/node": "22.10.1",
+    "@types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc",
     "autoprefixer": "^10.4.20",
     "eslint": "9.16.0",
     "postcss": "^8.4.49",
@@ -49,8 +51,6 @@
     "prettier-plugin-tailwindcss": "^0.6.9",
     "tailwindcss": "^3.4.15",
     "tailwindcss-animate": "^1.0.7",
-    "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc",
     "typescript": "5.7.2"
   },
   "overrides": {

@@ -7,7 +7,6 @@ import {
   sendGAEvent,
   sendGTMEvent,
 } from '@next/third-parties/google';
-import { Analytics as VercelAnalytics, track as vercelTrack } from '@vercel/analytics/react';
 
 import { env } from '~/env';
 import { isClient, isDev, isProd, signatureLog } from '~/lib/constants';
@@ -34,10 +33,6 @@ export function logEvent(name: string, parameters?: Record<string, any>) {
       if ('umami' in window) {
         window.umami?.track(name, parameters);
       }
-    }
-
-    if (env.NEXT_PUBLIC_VERCEL_ANALYTICS) {
-      vercelTrack(name, parameters);
     }
 
     if (isDev) {
@@ -73,7 +68,6 @@ export function Analytics() {
       {!!env.NEXT_PUBLIC_GA_TRACKING_ID && (
         <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_TRACKING_ID} />
       )}
-      {!!env.NEXT_PUBLIC_VERCEL_ANALYTICS && <VercelAnalytics />}
       {!!env.NEXT_PUBLIC_GTM_ID && <GoogleTagManager gtmId={env.NEXT_PUBLIC_GTM_ID} />}
     </>
   );
