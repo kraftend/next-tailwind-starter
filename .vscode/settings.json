@@ -11,6 +11,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
+  "eslint.useFlatConfig": false,
   "workbench.editor.customLabels.patterns": {
     "**/app/**/{*.tsx,*.ts}": "${dirname(1)}/${dirname}/${filename}.${extname}",
     "**/{index.tsx,index.ts}": "${dirname}/${filename}.${extname}"
