@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/** biome-ignore-all lint/suspicious/useAwait: headers and rewrites works async even if without await inside */
+/** biome-ignore-all lint/performance/useTopLevelRegex: <explanation> */
+/** biome-ignore-all lint/suspicious/noExplicitAny: <explanation> */
 import type { NextConfig } from 'next';
 
 import { env } from '~/env';
@@ -58,22 +57,22 @@ const config: NextConfig = {
       },
     ].filter(Boolean);
   },
-  experimental: {
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
       },
     },
   },
-  webpack(config: any) {
+  webpack(webpackConfig: any) {
     // ******* SVGR SUPPORT
     // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find((rule: any) => rule.test?.test?.('.svg'));
+    const fileLoaderRule = webpackConfig.module.rules.find((rule: any) =>
+      rule.test?.test?.('.svg')
+    );
     // Convert *.svg imports to React components
-    config.module.rules.push({
+    webpackConfig.module.rules.push({
       test: /\.svg$/i,
       issuer: fileLoaderRule.issuer,
       use: ['@svgr/webpack'],
@@ -82,7 +81,7 @@ const config: NextConfig = {
     fileLoaderRule.exclude = /\.svg$/i;
     // ******* END SVGR SUPPORT
 
-    return config;
+    return webpackConfig;
   },
 };
 

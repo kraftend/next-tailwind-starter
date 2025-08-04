@@ -4,33 +4,49 @@
   "search.exclude": {
     "package-lock.json": true,
     "yarn.lock": true,
-    "pnpm-lock.yaml": true
+    "pnpm-lock.yaml": true,
+    "bun.lock": true,
+    "bun.lockb": true
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "biomejs.biome",
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[css,postcss]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[graphql]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
+  "emmet.showExpandedAbbreviation": "never",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
   },
-  "eslint.useFlatConfig": false,
   "workbench.editor.customLabels.patterns": {
     "**/app/**/{*.tsx,*.ts}": "${dirname(1)}/${dirname}/${filename}.${extname}",
     "**/{index.tsx,index.ts}": "${dirname}/${filename}.${extname}"
   },
-  // Tailwind Styled Components
-  "tailwindCSS.includeLanguages": {
-    "typescript": "javascript", // if you are using typescript
-    "typescriptreact": "javascript" // if you are using typescript with react
-  },
   "editor.quickSuggestions": {
-    "strings": true // forces VS Code to trigger completions when editing "string" content
+    "strings": true
   },
-  "tailwindCSS.experimental.classRegex": [
-    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"], // cn(...)
-    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"] //cva(..)
-  ],
-  // Conventional Commits
-  "conventionalCommits.autoCommit": false,
-  //TS
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.tsdk": "node_modules/typescript/lib",

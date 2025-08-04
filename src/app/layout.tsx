@@ -11,13 +11,17 @@ import { cn } from '~/lib/utils';
 import './globals.css';
 import 'lenis/dist/lenis.css';
 
-const inter = Inter({ variable: '--font-sans', subsets: ['latin'], display: 'swap' });
+const inter = Inter({
+  variable: '--font-sans',
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: siteURL,
   title: {
     default: 'next-starter | kraftend',
-    template: `%s | kraftend`,
+    template: '%s | kraftend',
   },
   description: `Kraftend's default boilerplate with Next.js.`,
   openGraph: {
@@ -32,15 +36,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" className={cn(inter.variable)} suppressHydrationWarning>
+    <html className={cn(inter.variable)} lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
-          enableSystem
           disableTransitionOnChange
+          enableSystem
         >
           <Providers>{children}</Providers>
           <TailwindIndicator />

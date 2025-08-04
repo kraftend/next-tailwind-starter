@@ -1,12 +1,12 @@
 'use client';
 
-import Script from 'next/script';
 import {
   GoogleAnalytics,
   GoogleTagManager,
   sendGAEvent,
   sendGTMEvent,
 } from '@next/third-parties/google';
+import Script from 'next/script';
 
 import { env } from '~/env';
 import { isClient, isDev, isProd, signatureLog } from '~/lib/constants';
@@ -14,11 +14,13 @@ import { isClient, isDev, isProd, signatureLog } from '~/lib/constants';
 declare global {
   interface Window {
     umami?: {
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       track: (...args: any[]) => void;
     };
   }
 }
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function logEvent(name: string, parameters?: Record<string, any>) {
   if (typeof window !== 'undefined') {
     if (env.NEXT_PUBLIC_GA_TRACKING_ID) {
@@ -29,14 +31,12 @@ export function logEvent(name: string, parameters?: Record<string, any>) {
       sendGTMEvent({ event: name, ...parameters });
     }
 
-    if (env.NEXT_PUBLIC_UMAMI_TRACKING_ID) {
-      if ('umami' in window) {
-        window.umami?.track(name, parameters);
-      }
+    if (env.NEXT_PUBLIC_UMAMI_TRACKING_ID && 'umami' in window) {
+      window.umami?.track(name, parameters);
     }
 
     if (isDev) {
-      // eslint-disable-next-line no-console
+      // biome-ignore lint/suspicious/noConsole: <explanation>
       console.log(`Track: ${name}`, parameters);
     }
   }
@@ -46,9 +46,9 @@ function UmamiAnalytics() {
   if (env.NEXT_PUBLIC_UMAMI_TRACKING_ID) {
     return (
       <Script
-        strategy="afterInteractive"
-        src="/stats/script.js"
         data-website-id={env.NEXT_PUBLIC_UMAMI_TRACKING_ID}
+        src="/stats/script.js"
+        strategy="afterInteractive"
       />
     );
   }
@@ -58,7 +58,7 @@ function UmamiAnalytics() {
 
 export function Analytics() {
   if (isClient && isProd) {
-    // eslint-disable-next-line no-console
+    // biome-ignore lint/suspicious/noConsole: <explanation>
     console.log(signatureLog);
   }
 
@@ -68,7 +68,9 @@ export function Analytics() {
       {!!env.NEXT_PUBLIC_GA_TRACKING_ID && (
         <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_TRACKING_ID} />
       )}
-      {!!env.NEXT_PUBLIC_GTM_ID && <GoogleTagManager gtmId={env.NEXT_PUBLIC_GTM_ID} />}
+      {!!env.NEXT_PUBLIC_GTM_ID && (
+        <GoogleTagManager gtmId={env.NEXT_PUBLIC_GTM_ID} />
+      )}
     </>
   );
 }

@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/style/noNestedTernary: <explanation> */
 import { env } from '~/env';
 
 export const isDev = process.env.NODE_ENV === 'development';
@@ -13,7 +14,7 @@ export const siteURL = new URL(
       ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
       : isDev
         ? 'http://localhost:3000'
-        : '/',
+        : '/'
 );
 export const siteOrigin = siteURL.origin;
 

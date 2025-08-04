@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// biome-ignore lint/suspicious/useAwait: <explanation>
+// biome-ignore lint/correctness/noUnusedFunctionParameters: <explanation>
 export async function GET(request: Request) {
   return NextResponse.json({ message: 'Hello World!' });
 }

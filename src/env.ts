@@ -1,5 +1,5 @@
 import { createEnv } from '@t3-oss/env-nextjs';
-import { vercel } from '@t3-oss/env-nextjs/presets';
+import { vercel } from '@t3-oss/env-nextjs/presets-zod';
 import { z } from 'zod';
 
 export const env = createEnv({
@@ -24,5 +24,7 @@ export const env = createEnv({
     NEXT_PUBLIC_UMAMI_TRACKING_ID: process.env.NEXT_PUBLIC_UMAMI_TRACKING_ID,
     NEXT_PUBLIC_UMAMI_TRACKING_URL: process.env.NEXT_PUBLIC_UMAMI_TRACKING_URL,
   },
-  skipValidation: !!process.env.SKIP_ENV_VALIDATION || process.env.npm_lifecycle_event === 'lint',
+  skipValidation:
+    !!process.env.SKIP_ENV_VALIDATION ||
+    process.env.npm_lifecycle_event === 'lint',
 });
