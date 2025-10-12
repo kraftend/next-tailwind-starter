@@ -1,22 +1,30 @@
-/** biome-ignore-all lint/style/noNestedTernary: <explanation> */
-import { env } from '~/env';
+export const isDev = process.env.NODE_ENV === "development";
+export const isProd = process.env.NODE_ENV === "production";
 
-export const isDev = process.env.NODE_ENV === 'development';
-export const isProd = process.env.NODE_ENV === 'production';
-
-export const isClient = typeof document !== 'undefined';
+export const isClient = typeof document !== "undefined";
 export const isServer = !isClient;
 
-export const siteURL = new URL(
-  env.NEXT_PUBLIC_SITE_URL
-    ? env.NEXT_PUBLIC_SITE_URL
-    : process.env.NEXT_PUBLIC_VERCEL_URL
-      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-      : isDev
-        ? 'http://localhost:3000'
-        : '/'
-);
-export const siteOrigin = siteURL.origin;
+export const getURL = (path?: string | URL | null) => {
+  if (isClient) {
+    const protocol = window.location.protocol;
+    const domain = window.location.hostname;
+    const port = window.location.port;
+
+    return new URL(path || "", `${protocol}//${domain}${port ? `:${port}` : ""}`);
+  }
+
+  const url = process.env.NEXT_PUBLIC_SITE_URL || "";
+
+  if (!url && process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return new URL(path || "", `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`);
+  }
+
+  if (isDev) {
+    return new URL(path || "", "http://localhost:3000");
+  }
+
+  return new URL(path || "", url);
+};
 
 export const signatureLog = `
   @@@@@

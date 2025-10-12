@@ -1,5 +1,5 @@
-import Logo from '~/assets/kraftend.svg';
-import { ThemeToggle } from '~/components/ui/theme-toggle';
+import Logo from "~/assets/kraftend.svg";
+import { ThemeToggle } from "~/components/ui/theme-toggle";
 
 export default function Home() {
   return (
