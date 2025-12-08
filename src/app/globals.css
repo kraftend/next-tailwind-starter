@@ -140,7 +140,7 @@
 
     &::before {
       content: "";
-      @apply absolute bottom-1 left-4 right-4 h-[0.1em] min-h-[1px] origin-right scale-x-0 bg-current transition duration-500 ease-in-out;
+      @apply absolute bottom-1 left-4 right-4 h-[0.1em] min-h-px origin-right scale-x-0 bg-current transition duration-500 ease-in-out;
     }
 
     &:hover:before,

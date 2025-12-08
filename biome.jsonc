@@ -38,6 +38,11 @@
     "lineWidth": 100,
     "formatWithErrors": true
   },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
   "vcs": {
     "enabled": true,
     "clientKind": "git",
